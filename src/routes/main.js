@@ -1,11 +1,15 @@
-const { index,about,contact,music } = require('../controllers/mainController');
-
 const router = require('express').Router();
+const { index,about,contact,music,admin,login,noentry } = require('../controllers/mainController');
 
+
+const accessAdmin = require('../middlewares/accessAdmin')
 router
       .get('/', index)
       .get('/about',about)
       .get('/contact',contact)
       .get('/music',music)
+      .get('/admin',accessAdmin,admin)
+      .get('/login',login)
+      .get('/noEntry',noentry)
 
 module.exports = router;
